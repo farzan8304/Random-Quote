@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import axios from "axios";
 import "../components/randomQuote.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faRefresh } from "@fortawesome/free-solid-svg-icons";
 import { faWikipediaW } from "@fortawesome/free-brands-svg-icons";
+import { faArrowRightLong } from "@fortawesome/free-solid-svg-icons/faArrowRightLong";
 
 const RandomQuote = () => {
   const [quote, setQuote] = useState({
@@ -22,30 +22,29 @@ const RandomQuote = () => {
   };
 
   return (
-    <div className="container content-center lg:h-1/2 h-1/3 m-4 lg:px-28 sm:px-16 p-3 bg-gray-900 rounded-lg outline outline-1 outline-white md:outline-offset-8 outline-offset-4 text-white font-mono select-none">
-      <p className="border-b md:pb-8 pb-5 md:mb-8 mb-5 text-center lg:text-3xl text-lg">
-        "{quote.content}"
+    <div className="2xl:w-2/3 lg:w-3/4 md:w-4/5 sm:w-5/6 w-11/12 font-mono text-darkBrowne dark:text-parchment">
+      <p className="xl:h-60 lg:h-72 h-80 flex items-center justify-center sm:text-3xl text-2xl text-center pb-4">
+        &ldquo; {quote.content}&nbsp;&rdquo;
       </p>
-      <div className="flex justify-between md:px-5 p-0 lg:text-xl text-sm lg:h-10 h-7">
-        <span className="content-center">- {quote.author}</span>
-        <span className="leading-none flex content-center">
-          <button
-            onClick={fetchRandomQuote}
-            className="md:mr-2 m-0 lg:w-24 md:w-16 w-10 rounded-lg transition ease-in-out delay-75 bg-green-600 hover:bg-emerald-800 duration-300"
-          >
-            <FontAwesomeIcon icon={faRefresh} />
-          </button>
-          <button className="ml-2 lg:w-24 md:w-16 w-10 rounded-lg transition ease-in-out delay-75 bg-blue-600 hover:bg-indigo-800 duration-300">
+      <div className="sm:flex justify-between items-center p-4 border-t-2 border-darkBrowne dark:border-parchment">
+        <span className="text-xl">- {quote.author}</span>
+        <div className="text-2xl text-parchment text-center sm:m-0 mt-10 sm:block grid grid-cols-2">
+          <button className="bg-kombuGreen dark:bg-parchment text-amber-50  dark:text-darkBrowne  rounded sm:m-2 mr-2 active:scale-9 hover:scale-105 transition ease-in-out delay-75">
             <a
-              className="block content-center lg:h-10 h-7"
+              className="content-center block sm:h-10 h-12 sm:w-20 pt-1"
               href={`https://en.wikipedia.org/wiki/${quote.author}`}
               target="_blank"
-              rel="noopener noreferrer"
             >
               <FontAwesomeIcon icon={faWikipediaW} />
             </a>
           </button>
-        </span>
+          <button
+            onClick={fetchRandomQuote}
+            className="bg-darkBrowne rounded sm:h-10 h-12 sm:w-20 sm:m-2 ml-2 pt-1 active:scale-95 hover:scale-105 transition ease-in-out delay-75"
+          >
+            <FontAwesomeIcon icon={faArrowRightLong} style={{ fontSize: "" }} />
+          </button>
+        </div>
       </div>
     </div>
   );
